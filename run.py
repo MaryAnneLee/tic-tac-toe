@@ -1,7 +1,7 @@
 import math
 import random
 
-# Three different type of players
+# Different type of players
 class Player:
     # Letter is x or o 
     delf.letter = letter
@@ -62,3 +62,33 @@ class TicTacToe:
     # Available moves
     def available_moves(self):
         return [i for i, spot in enumerate(self.board) if spot == ' ']
+
+    def empty_squares(self):
+        return ' ' in self.board # show empty squares? 
+
+    def num_empty_squares(self):
+        return self.board.count(' ') # count empty spots
+
+    def make_move(self, square, letter):
+        # if valid move, then make the move (assign square to letter)
+        # then return true. If invalid, return false
+        if self.board[square] == ' ':
+            self.board[square] = letter
+            return True
+        return False
+
+# The moves of the game  
+def play(game, x_player, o_player, print_game=True):
+    if print_game:
+        game.print_board_nums()
+
+    letter = 'X' # Starting letter
+    # iterate while the game still has empty squares
+    while game.empty_squares():
+        # gets the move from the right player
+        if letter == 'O':
+            square = o_player.get_move(game)
+        else:
+            square = x_player.get_move(game)
+
+        
