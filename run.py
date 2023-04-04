@@ -2,23 +2,24 @@ import math
 import random
 
 # Different type of players
-class Player:
-    # Letter is x or o 
-    delf.letter = letter
 
+class Player():  # Base player
+    def __init__(self, letter):
+        # Letter is x or o 
+        self.letter = letter
 
     # All players get their next move given a game
     def get_move(self,game):
         pass
 
-class RandomComputerPlayer(Player):
+class RandomComputerPlayer(Player):  # Computer player
     def __init__(self, letter):
         super().__init__(letter)
         # gets a random valid spot for the next move
         def get_move(self, game):
             square = random.choice(game.available_moves())
 
-class HumanPlayer(Player):
+class HumanPlayer(Player):  # Human player
     def __init__(self, letter):
         super().__init__(letter)
 
@@ -138,9 +139,10 @@ def play(game, x_player, o_player, print_game=True):
         # after the move, letter needs to alternate to switch players
         letter = 'O' if letter == 'X' else 'X'
 
-        if print_game:
-            print("It's a tie!")
+if print_game:
+    print("It's a tie!")
 
+# play the game
 if __name__ == ' __main__':
     x_player = HumanPlayer('X')
     o_player = RandomComputerPlayer('O')
