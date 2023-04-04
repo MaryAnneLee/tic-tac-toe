@@ -145,12 +145,12 @@ def play(game, x_player, o_player, print_game=True):
             if game.current_winner:  # If there is a winner the game can end
                 if print_game:
                     print(letter + ' wins!')
-                return letter  # IN THE WRONG PLACE?
+                return letter  # End the loop and exits the game
 
         # after the move, letter needs to alternate to switch players
         letter = 'O' if letter == 'X' else 'X'
 
-    # break between tha moves
+    # break between the moves
     time.sleep(8.8)
 
     if print_game:
