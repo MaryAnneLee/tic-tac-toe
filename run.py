@@ -45,10 +45,10 @@ class HumanPlayer(Player):
 class TicTacToe:
     def __init__(self):
         self.board = [' ' for _ in range(9)] 
-        self.current_winner = None # Keeping track of the winner
+        self.current_winner = None  # Keeping track of the winner
 
     def print_board(self):
-        #getting the rows
+        # getting the rows
         for row in [self.board[i*3:(i+1)*3] for i in range(3)]:
             print('|' + '|'.join(row) + '|')
 
@@ -64,7 +64,7 @@ class TicTacToe:
         return [i for i, spot in enumerate(self.board) if spot == ' ']
 
     def empty_squares(self):
-        return ' ' in self.board # show empty squares? 
+        return ' ' in self.board  # show empty squares? 
 
     def num_empty_squares(self):
         return self.board.count(' ') # count empty spots
@@ -74,15 +74,18 @@ class TicTacToe:
         # then return true. If invalid, return false
         if self.board[square] == ' ':
             self.board[square] = letter
+            if self.winner(square, letter):
+                self.current_winner = letter
             return True
         return False
+
 
 # The moves of the game  
 def play(game, x_player, o_player, print_game=True):
     if print_game:
         game.print_board_nums()
 
-    letter = 'X' # Starting letter
+    letter = 'X'  # Starting letter
     # iterate while the game still has empty squares
     while game.empty_squares():
         # gets the move from the right player
@@ -90,5 +93,19 @@ def play(game, x_player, o_player, print_game=True):
             square = o_player.get_move(game)
         else:
             square = x_player.get_move(game)
+
+        # defines function to make a move
+        if game.make_move(square, letter):
+            if print_game:
+                print(letter + f' makes a move to {square}')
+                game.print_board()
+                print('')  # just empty line
+            
+            if game.current_winner:
+                if print_game:
+                    print(letter + ' wins!')
+
+        # after the move, letter needs to alternate to switch players
+        letter = 'O' if letter == 'X' else 'X'
 
         
