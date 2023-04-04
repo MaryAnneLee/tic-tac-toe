@@ -67,7 +67,7 @@ class TicTacToe:
         return ' ' in self.board  # show empty squares? 
 
     def num_empty_squares(self):
-        return self.board.count(' ') # count empty spots
+        return self.board.count(' ')  # count empty spots
 
     def make_move(self, square, letter):
         # if valid move, then make the move (assign square to letter)
@@ -78,10 +78,39 @@ class TicTacToe:
                 self.current_winner = letter
             return True
         return False
+    
+
+    def winner(self, square, letter):
+        # winner when 3 in a row horisontal, vertical or diagonal
+        # row check
+        row_ind = square // 3
+        row = self.board[row_ind*3 : (row_ind + 1) * 3]
+        if all([spot == letter for spot in row]):
+            return True
+        
+        # column check
+        col_ind = square % 3
+        column = [self.board[col_ind+i*3] for i in range(3)]
+        if all([spot == letter for spot in column]):
+            return True
+        
+        # diagonals check
+        # the only moves possible to win a diagonal is 0,2,4,6,8
+        if square % 2 == 0:
+            diagonal1 = [self.board[i] for i in [0, 4, 8]]  # left to right diagonal
+            if all([spot == letter for spot in diagonal1]):
+                return True
+            diagonal2 = [self.board[i] for i in [2, 4, 6]]  # right to left diagonal
+            if all([spot == letter for spot in diagonal]):
+                return True
+        
+        # if all checks fail 
+        return False
 
 
 # The moves of the game  
 def play(game, x_player, o_player, print_game=True):
+    # Returns the winner (the letter) of the game. Or None for a tie.
     if print_game:
         game.print_board_nums()
 
@@ -104,8 +133,12 @@ def play(game, x_player, o_player, print_game=True):
             if game.current_winner:
                 if print_game:
                     print(letter + ' wins!')
+                return letter
 
         # after the move, letter needs to alternate to switch players
         letter = 'O' if letter == 'X' else 'X'
+
+        if print_game:
+            print("It's a tie!")
 
         
