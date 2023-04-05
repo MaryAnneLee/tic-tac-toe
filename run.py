@@ -2,6 +2,16 @@ import math
 import random
 import time
 
+# Information about the game
+
+print("Let´s play Tic Tac Toe!\n")
+print("Try to get three in a row! Vertically, horizontally och diagonally.")
+print("You have the letter X and starts the game")
+print("Place your letter X on an empty square by choosing a number between 0-8")
+print("If all squares are full and no one has three in a row, it's a tie!")
+print("Good luck!")
+
+
 # Two different type of players with one base player
 
 
@@ -43,8 +53,8 @@ class RandomComputerPlayer(Player):  # Computer player
         # gets a random valid spot for the next move
 
     def get_move(self, game):
-            square = random.choice(game.available_moves())
-            return square
+        square = random.choice(game.available_moves())
+        return square
 
 
 # The board - a single list to rep 3x3
@@ -86,8 +96,8 @@ class TicTacToe():
 
     def winner(self, square, letter):
         # row check
-        row_ind = square // 3 # or row_ind = math.floor(square / 3)
-        row = self.board[row_ind*3:(row_ind + 1)* 3]
+        row_ind = math.floor(square / 3)
+        row = self.board[row_ind*3:(row_ind + 1) * 3]
         if all([spot == letter for spot in row]):
             return True
 
@@ -162,7 +172,7 @@ def play(game, x_player, o_player, print_game=True):
 # play the game
 
 
-#if __name__ == ' __main__':
+# if __name__ == ' __main__':
 x_player = HumanPlayer('X')
 o_player = RandomComputerPlayer('O')
 t = TicTacToe()
