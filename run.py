@@ -2,14 +2,17 @@ import math
 import random
 import time
 
+# Most of the code comes from a tutorial by FreeCodeCamp.org,
+# linked to in the Readme-file
+
 # Information about the game
 
 print("Let´s play Tic Tac Toe!\n")
-print("Try to get three in a row! Vertically, horizontally och diagonally.")
+print("Try to get three in a row! Vertically, horizontally or diagonally.")
 print("You have the letter X and starts the game")
-print("Place your letter X on an empty square by choosing a number between 0-8")
+print("Place your move on an empty square by choosing a number between 0-8")
 print("If all squares are full and no one has three in a row, it's a tie!")
-print("Good luck!")
+print("Good luck!\n")
 
 
 # Two different type of players with one base player
@@ -20,7 +23,7 @@ class Player():  # Base player
         # Letter is x or o
         self.letter = letter
 
-    # All players get their next move given a game
+    # Players get their next move given a game
     def get_move(self, game):
         pass
 
@@ -34,23 +37,23 @@ class HumanPlayer(Player):  # Human player
         val = None
         while not valid_square:
             square = input(self.letter + '\'s turn. Input move (0-8): ')
-            # Checking that this is a correct value by trying to cast
-            # it to an integer, and if it's not, then we says its invalid.
-            # if that spot is not available, we also say its invalid
+            # Checking that it is a correct value
+            # If it's not a correct value, then it's invalid.
+            # If the spot is not available, it's invalid.
             try:
                 val = int(square)
                 if val not in game.available_moves():
                     raise ValueError
                 valid_square = True
             except ValueError:
-                print('Invalid square. Try again.')
+                print('Invalid input. Try again.')
         return val
 
 
 class RandomComputerPlayer(Player):  # Computer player
     def __init__(self, letter):
         super().__init__(letter)
-        # gets a random valid spot for the next move
+        # Gets a random valid spot for the next move
 
     def get_move(self, game):
         square = random.choice(game.available_moves())
@@ -69,7 +72,7 @@ class TicTacToe():
         return [' ' for _ in range(9)]
 
     def print_board(self):
-        # getting the rows
+        # Getting the rows
         for row in [self.board[i*3:(i+1)*3] for i in range(3)]:
             print('| ' + ' | '.join(row) + ' |')
 
@@ -82,7 +85,7 @@ class TicTacToe():
             print('| ' + ' | '.join(row) + ' |')
 
     def make_move(self, square, letter):
-        # if valid move, then make the move (assign square to letter)
+        # If valid, then make the move (assign square to letter)
         # then return true. If invalid, return false
         if self.board[square] == ' ':
             self.board[square] = letter
@@ -92,41 +95,41 @@ class TicTacToe():
         return False
 
     # Function that check for a winner
-    # winner when 3 in a row horisontal, vertical or diagonal
+    # Winner when 3 in a row horizontally, vertically or diagonally
 
     def winner(self, square, letter):
-        # row check
+        # Row check
         row_ind = math.floor(square / 3)
         row = self.board[row_ind*3:(row_ind + 1) * 3]
         if all([spot == letter for spot in row]):
             return True
 
-        # column check
+        # Column check
         col_ind = square % 3
         column = [self.board[col_ind+i*3] for i in range(3)]
         if all([spot == letter for spot in column]):
             return True
 
-        # diagonals check
-        # the only moves possible to win a diagonal is 0,2,4,6,8
+        # Diagonals check
+        # The only moves possible to win a diagonal is 0,2,4,6,8
         if square % 2 == 0:
-            # left to right diagonal
+            # Left to right diagonal
             diagonal1 = [self.board[i] for i in [0, 4, 8]]
             if all([spot == letter for spot in diagonal1]):
                 return True
-            # right to left diagonal
+            # Right to left diagonal
             diagonal2 = [self.board[i] for i in [2, 4, 6]]
             if all([spot == letter for spot in diagonal2]):
                 return True
 
-        # if all checks fail
+        # If all checks fail
         return False
 
     def empty_squares(self):
-        return ' ' in self.board  # show empty squares?
+        return ' ' in self.board  # Show empty squares
 
     def num_empty_squares(self):
-        return self.board.count(' ')  # count empty spots
+        return self.board.count(' ')  # Count empty spots
 
     # Available moves after a move is made
     def available_moves(self):
@@ -134,42 +137,42 @@ class TicTacToe():
 
 
 # The moves of the game
+# Returns the winner (X or O) of the game. Or None for a tie.
 def play(game, x_player, o_player, print_game=True):
-    # Returns the winner (the letter) of the game. Or None for a tie.
     if print_game:
         game.print_board_nums()
 
     letter = 'X'  # Starting letter
-    # iterate while the game still has empty squares
+    # Iterate while the game still has empty squares
     while game.empty_squares():
-        # gets the move from the right player
+        # Gets the move from the right player
         if letter == 'O':
             square = o_player.get_move(game)
         else:
             square = x_player.get_move(game)
 
-        # defines function to make a move
+        # Function on who makes a move
         if game.make_move(square, letter):
             if print_game:
-                print(letter + ' makes a move to square{}'.format(square))
+                print(letter + ' makes a move to square {}'.format(square))
                 game.print_board()
-                print('')  # just empty line
+                print('')  # Empty line
 
             if game.current_winner:  # If there is a winner the game can end
                 if print_game:
                     print(letter + ' wins!')
                 return letter  # End the loop and exits the game
 
-            # after the move, letter needs to alternate to switch players
+            # After one move, letter needs to alternate to switch players
             letter = 'O' if letter == 'X' else 'X'
 
-        # break between the moves
+        # Break between the moves
         time.sleep(1.8)
 
     if print_game:
         print("It's a tie!")
 
-# play the game
+# To play the game
 
 
 # if __name__ == ' __main__':
