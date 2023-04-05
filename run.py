@@ -2,7 +2,7 @@ import math
 import random
 import time
 
-# Different type of players
+# Two different type of players with one base player
 
 
 class Player():  # Base player
@@ -15,45 +15,48 @@ class Player():  # Base player
         pass
 
 
+class HumanPlayer(Player):  # Human player
+    def __init__(self, letter):
+        super().__init__(letter)
+
+    def get_move(self, game):
+        valid_square = False
+        val = None
+        while not valid_square:
+            square = input(self.letter + '\'s turn. Input move (0-8): ')
+            # Checking that this is a correct value by trying to cast
+            # it to an integer, and if it's not, then we says its invalid.
+            # if that spot is not available, we also say its invalid
+            try:
+                val = int(square)
+                if val not in game.available_moves():
+                    raise ValueError
+                valid_square = True
+            except ValueError:
+                print('Invalid square. Try again.')
+        return val
+
+
 class RandomComputerPlayer(Player):  # Computer player
     def __init__(self, letter):
         super().__init__(letter)
         # gets a random valid spot for the next move
 
-        def get_move(self, game):
+    def get_move(self, game):
             square = random.choice(game.available_moves())
             return square
-
-
-class HumanPlayer(Player):  # Human player
-    def __init__(self, letter):
-        super().__init__(letter)
-
-        def get_move(self, game):
-            valid_square = False
-            val = None
-            while not valid_square:
-                square = input(self.letter + '\'s turn. Input move (0-8):')
-                # Checking that this is a correct value by trying to cast
-                # it to an integer, and if it's not, then we says its invalid.
-                # if that spot is not available, we also say its invalid
-                try:
-                    val = int(square)
-                    if val not in game.available_moves():
-                        raise ValueError
-                    valid_square = True
-                except ValueError:
-                    print('Invalid square. Try again.')
-
-            return val
 
 
 # The board - a single list to rep 3x3
 
 class TicTacToe():
     def __init__(self):
-        self.board = [' ' for _ in range(9)]
+        self.board = self.make_board()
         self.current_winner = None  # Keeping track of the winner
+
+    @staticmethod
+    def make_board():
+        return [' ' for _ in range(9)]
 
     def print_board(self):
         # getting the rows
@@ -68,16 +71,6 @@ class TicTacToe():
         for row in number_board:
             print('| ' + ' | '.join(row) + ' |')
 
-    # Available moves after a move is made
-    def available_moves(self):
-        return [i for i, spot in enumerate(self.board) if spot == ' ']
-
-    def empty_squares(self):
-        return ' ' in self.board  # show empty squares?
-
-    def num_empty_squares(self):
-        return self.board.count(' ')  # count empty spots
-
     def make_move(self, square, letter):
         # if valid move, then make the move (assign square to letter)
         # then return true. If invalid, return false
@@ -89,12 +82,12 @@ class TicTacToe():
         return False
 
     # Function that check for a winner
+    # winner when 3 in a row horisontal, vertical or diagonal
 
     def winner(self, square, letter):
-        # winner when 3 in a row horisontal, vertical or diagonal
         # row check
-        row_ind = square // 3
-        row = self.board[row_ind*3: (row_ind + 1) * 3]
+        row_ind = square // 3 # or row_ind = math.floor(square / 3)
+        row = self.board[row_ind*3:(row_ind + 1)* 3]
         if all([spot == letter for spot in row]):
             return True
 
@@ -119,6 +112,16 @@ class TicTacToe():
         # if all checks fail
         return False
 
+    def empty_squares(self):
+        return ' ' in self.board  # show empty squares?
+
+    def num_empty_squares(self):
+        return self.board.count(' ')  # count empty spots
+
+    # Available moves after a move is made
+    def available_moves(self):
+        return [i for i, x in enumerate(self.board) if x == ' ']
+
 
 # The moves of the game
 def play(game, x_player, o_player, print_game=True):
@@ -138,7 +141,7 @@ def play(game, x_player, o_player, print_game=True):
         # defines function to make a move
         if game.make_move(square, letter):
             if print_game:
-                print(letter + f' makes a move to {square}')
+                print(letter + ' makes a move to square{}'.format(square))
                 game.print_board()
                 print('')  # just empty line
 
@@ -147,11 +150,11 @@ def play(game, x_player, o_player, print_game=True):
                     print(letter + ' wins!')
                 return letter  # End the loop and exits the game
 
-        # after the move, letter needs to alternate to switch players
-        letter = 'O' if letter == 'X' else 'X'
+            # after the move, letter needs to alternate to switch players
+            letter = 'O' if letter == 'X' else 'X'
 
-    # break between the moves
-    time.sleep(8.8)
+        # break between the moves
+        time.sleep(1.8)
 
     if print_game:
         print("It's a tie!")
@@ -159,7 +162,7 @@ def play(game, x_player, o_player, print_game=True):
 # play the game
 
 
-# if __name__ == ' __main__':
+#if __name__ == ' __main__':
 x_player = HumanPlayer('X')
 o_player = RandomComputerPlayer('O')
 t = TicTacToe()
