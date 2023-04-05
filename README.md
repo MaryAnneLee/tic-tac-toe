@@ -113,7 +113,7 @@ To clone this repository:
 
 ## Testing
 
-- PEP8
+- ![PEP8](images/pep8.png)
 
 
 - Lighthouse testing
@@ -129,10 +129,10 @@ To clone this repository:
 
 ### Code Used
 
-- Inspiration and code came from a tutorial on YouTube.
- - []()
+- Code came from a tutorial on YouTube that I followed. Only nine days to learn Python and create a project isn't enough time for me to do it all on my own. 
+ - [12 beginner Python projects from freeCodeCamp.org](https://www.youtube.com/watch?v=8ext9G7xspg)
  
-- The wonderful readme template came from [Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md)
+- The Readme template came orginally from [Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md) but changes with every project. 
 
 ### Content
 
