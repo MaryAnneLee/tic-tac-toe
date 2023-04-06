@@ -78,7 +78,6 @@ When player enters a invalid input like a letter,number, space or just enter tha
 - Gitpod
 - Heroku
 - Pep8 CI Python Linter
-- w3 schools
 
 
 ## Deployment & Local Development
@@ -88,20 +87,21 @@ When player enters a invalid input like a letter,number, space or just enter tha
 The instructions to deploy this project:
 
 - Log in to Heroku or create an account
-- On the main page click the button labelled New in the top right corner and from the drop-down menu select Create New App
+- On the main page click the button New in the top right corner and from the drop-down menu select Create new app
 - Enter a unique app name
 - Select your region
- - Click on the Create App button
-- The next page is the project’s Deploy Tab. Click on the Settings Tab and scroll down to Config Vars
-- Click Reveal Config Vars and enter PORT into the Key box and 8000 into the Value box and click the Add button
-- Scroll down to the Buildpack section click Add Buildpack select Python and click Save Changes
-- Click Add Buildpack again and select node.js Note: The Buildpacks must be in the correct order with Python first. 
+ - Click on the Create app button
+- On the overview page choose Settings and scroll down to Config vars
+- Click Reveal config vars and enter PORT into the Key box and 8000 into the Value box and then click Add
+- Scroll down to the Buildpack section click Add buildpack. Select Python and click Save changes
+- Click Add buildpack again and select node.js 
+Note: The Buildpacks must be in the correct order with Python first. 
 - Scroll to the top of the page and choose the Deploy tab
 - Select Github as the deployment method
 - Confirm you want to connect to GitHub
 - Search for the repository name and click the connect button
-- Scroll to the bottom of the deploy page and select the preferred deployment type
-- Click Enable Automatic Deploys for automatic deployment when you push updates to Github
+- Scroll to the bottom of the deploy page and select deployment type
+- Click Enable automatic deploys for automatic deployment when you push updates to Github
 
 
 #### How to Fork
