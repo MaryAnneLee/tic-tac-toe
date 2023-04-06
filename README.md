@@ -124,12 +124,29 @@ To clone this repository:
 
 ## Testing
 ---
-- ![PEP8 CI Python Linter](images/pep8.png)
+- At first there were some indentations issuses (but not mentioning the indentations below), one line to long and some white spaces. All of that is fixed as screenshot shows. 
+
+![PEP8 CI Python Linter](images/pep8.png)
 
 
 ### Solved bugs
 
-1.   
+1.   When trying to run the game in gitpod terminal - it doesn't work. No game board is visible in the terminal. 
+Solutions: Found one line missing in the  code (deleted by mistake?) and a spelling mistake. Still doesn’t run after changes.
+
+Asked some of my classmates on Slack about my problem and got the tip to remove one line of the code.
+That made the game board visible but showed errors (Bug nr 2.)
+
+
+2. ![Game error 1](images/game-first-error.png)
+
+Solution: Went through the code again and found an indentation error for the Human player. Fixed that and the game starts and the first move is made, but a new error after that. (Bug nr.3)
+
+
+3. ![Game error 2](images/game-second-error.png)
+
+Same indentation error for the computer player. Fixed that and after that the game runs as it should.
+
 
 
 ## Credits
@@ -137,9 +154,10 @@ To clone this repository:
 ### Code Used
 
 - Code came from a tutorial on YouTube that I followed. Only nine days to learn Python and create a project isn't enough time for me to do it all on my own. 
- - [12 beginner Python projects from freeCodeCamp.org](https://www.youtube.com/watch?v=8ext9G7xspg)
+
+[12 beginner Python projects from freeCodeCamp.org](https://www.youtube.com/watch?v=8ext9G7xspg)
  
-- The Readme template came orginally from [Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md) but changes by me with every project. 
+- The Readme template came orginally from [Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md) but changes made by me with every new project. 
 
 ### Content
 
@@ -148,7 +166,7 @@ Written by Anne-Lie Smith following a tutorial On YouTube.
   
 ###  Acknowledgments
 
-A special thanks to peolpe that helped me complete my first portfolio project!
+A special thanks to peolpe that helped me complete my third portfolio project!
 - Martina Terlevic, my Code institute mentor.
 - Paul Thomas O'Riordan for helping out with questions in our Slack class channel.
 - Kera Cudmore, for all the information about the Readme-file.
