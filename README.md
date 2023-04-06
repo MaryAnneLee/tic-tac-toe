@@ -1,10 +1,9 @@
 # Tic Tac Toe
 
-Tic Tac Toe , a game created for the Project Portfolio 3 at Code Institute.
+Tic Tac Toe, a game created for the Project Portfolio 3 at Code Institute.
+A game where two players (one is the computer) takes turn making moves on a gameboard with 9 squares. Placing out X or O and try to get three in a row.  
 
-![Tic Tac Tooe game](.png)
-
-[View Tic Tac Toe on Github pages](https://github.com/MaryAnneLee/tic-tac-toe)
+[View Tic Tac Toe live](https://github.com/MaryAnneLee/tic-tac-toe)
 
 
 ---
@@ -15,16 +14,13 @@ Tic Tac Toe , a game created for the Project Portfolio 3 at Code Institute.
   * [User Stories](#user-stories)
 
 * [Features](#features)
-  * [Future Implementations](#future-implementations)
-  * [Accessibility](#accessibility)
 
 * [Technologies Used](#technologies-used)
   * [Languages Used](#languages-used)
   * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
 
-* [Deployment & Local Development](#deployment--local-development)
+* [Deployment](#deployment)
   * [Deployment](#deployment)
-  * [Local Development](#local-development)
     * [How to Fork](#how-to-fork)
     * [How to Clone](#how-to-clone)
 
@@ -38,23 +34,40 @@ Tic Tac Toe , a game created for the Project Portfolio 3 at Code Institute.
 ---
 
 ## User experience (UX)
-
-Tic Tac Toe is a game to play for fun.
-
+---
 ### User stories
-A simple and fun game to play. 
-
-#### User goals
-To play a fun game.
-To  play a game that is easy to navigate and understand.
+A simple game to play for fun.
 
 ## Features
+---
+When the game runs the player see instructions to the game and information to make their first move.
 
+![Tic Tac Toe start](images/game-start.png)
+
+
+When the first move is made the computer makes a move and the information is visible on the screen.
+
+![The first moves of the game](images/game-first-moves.png)
+
+
+The player and computer takes turn in making moves.
+
+![Moves of the game](images/game-second-moves.png)
+
+
+The first to get three in a row wins!
+
+![And the winner is](images/game-winner.png)
+
+
+When player enters a invalid input like a letter,number, space or just enter that's not part of the game, information goes out to try again. 
+
+![Invalid input](images/game-invalid-input.png)
 
 
 
 ## Technologies Used
-
+---
 ### Languages Used
 
 - Python
@@ -64,12 +77,12 @@ To  play a game that is easy to navigate and understand.
 - Github
 - Gitpod
 - Heroku
-- Pep8
+- Pep8 CI Python Linter
 - w3 schools
 
 
 ## Deployment & Local Development
-
+---
 ### Deployment
 
 The instructions to deploy this project:
@@ -80,9 +93,8 @@ The instructions to deploy this project:
 - Select your region
  - Click on the Create App button
 - The next page is the project’s Deploy Tab. Click on the Settings Tab and scroll down to Config Vars
-- Click Reveal Config Vars and enter port into the Key box and 8000 into the Value box and click the Add button
-- (Click Reveal Config Vars again and enter CREDS into the Key box and the Google credentials into the Value box)
-- Scroll down to the Buildpack section click Add Buildpack select python and click Save Changes
+- Click Reveal Config Vars and enter PORT into the Key box and 8000 into the Value box and click the Add button
+- Scroll down to the Buildpack section click Add Buildpack select Python and click Save Changes
 - Click Add Buildpack again and select node.js Note: The Buildpacks must be in the correct order with Python first. 
 - Scroll to the top of the page and choose the Deploy tab
 - Select Github as the deployment method
@@ -91,7 +103,6 @@ The instructions to deploy this project:
 - Scroll to the bottom of the deploy page and select the preferred deployment type
 - Click Enable Automatic Deploys for automatic deployment when you push updates to Github
 
-### Local Development
 
 #### How to Fork
 
@@ -112,13 +123,9 @@ To clone this repository:
 - Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
 
 ## Testing
+---
+- ![PEP8 CI Python Linter](images/pep8.png)
 
-- ![PEP8](images/pep8.png)
-
-
-- Lighthouse testing
-
-![Lighthouse testing](.png)
 
 ### Solved bugs
 
@@ -126,13 +133,13 @@ To clone this repository:
 
 
 ## Credits
-
+---
 ### Code Used
 
 - Code came from a tutorial on YouTube that I followed. Only nine days to learn Python and create a project isn't enough time for me to do it all on my own. 
  - [12 beginner Python projects from freeCodeCamp.org](https://www.youtube.com/watch?v=8ext9G7xspg)
  
-- The Readme template came orginally from [Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md) but changes with every project. 
+- The Readme template came orginally from [Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md) but changes by me with every project. 
 
 ### Content
 
